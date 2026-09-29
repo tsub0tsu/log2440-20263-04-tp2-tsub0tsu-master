@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PolyTag</title>
+  <link rel="stylesheet" href="./assets/styles.css">
+  <script type="module" src="./assets/js/main.js" defer></script>
+</head>
+
+<body>
+  <header class="flex-column">
+    <h1>PolyTag</h1>
+    <p>Gestionnaire d'étiquettes (<em>tags</em>) pour un corpus de textes</p>
+  </header>
+  <main>
+    <aside id="controls" class="flex-column">
+      <section id="add-text-section">
+        <h2>Ajouter un texte</h2>
+        <form id="add-text-form" class="flex-column">
+          <textarea id="new-text-input" rows="6" placeholder="Entrez le contenu du nouveau texte..."
+            required></textarea>
+          <button type="submit">Ajouter au corpus</button>
+        </form>
+      </section>
+      <section id="tagging-section">
+        <h2>Générer les tags</h2>
+        <label for="tag-count-input">Nombre de tags par texte :</label>
+        <input type="number" id="tag-count-input" min="1" max="10" value="3">
+        <div id="tagger-buttons">
+          <button id="frequency-tagger-btn" type="button">Tagger par fréquence</button>
+          <button id="tfidf-tagger-btn" type="button">Tagger TF-IDF</button>
+        </div>
+      </section>
+      <section id="filter-section">
+        <h2>Filtre actif</h2>
+        <p id="active-filter">Aucun filtre. Cliquez sur un tag pour filtrer le corpus.</p>
+        <button id="reset-filter-btn" type="button">Réinitialiser le filtre</button>
+      </section>
+    </aside>
+    <section id="corpus-section">
+      <h2>Corpus (<span id="text-count">0</span> textes)</h2>
+      <div id="texts-container">
+        <!-- Les textes du corpus sont générés ici par ui.js. Ceci est un exemple de la structure finale à reproduire -->
+        <article class="text-card flex-column">
+          <span class="text-id">Texte #1234</span>
+          <p class="text-content">Exemple de texte </p>
+          <button class="delete-btn">X</button>
+          <div class="tag-list">
+            <span class="tag">tag1</span><span class="tag">tag2</span>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

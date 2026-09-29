@@ -1,0 +1,170 @@
+:root {
+  --primary: #1f3a5f;
+  --primary-light: #3e6188;
+  --accent: #c8e0f4;
+  --background: #f5f7fa;
+  --background-delete: #dd3333;
+  --card-background: #ffffff;
+  --border: #d5dbe3;
+  --text: #1d2733;
+  --text-light: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+header {
+  background-color: var(--primary);
+  color: var(--text-light);
+  padding: 1rem 2rem;
+  align-items: center;
+}
+
+header * {
+  margin: 0.25rem 0 0;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  margin: auto;
+  max-width: 1200px;
+}
+
+#controls {
+  gap: 1rem;
+  position: sticky;
+  top: 1.5rem;
+}
+
+#controls section {
+  background-color: var(--card-background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+#add-text-form {
+  gap: 0.75rem;
+}
+
+#controls h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+}
+
+#new-text-input {
+  resize: vertical;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font: inherit;
+}
+
+#tag-count-input {
+  width: 5rem;
+  padding: 0.3rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font: inherit;
+}
+
+#tagger-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+button {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--primary);
+  color: var(--text-light);
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--primary-light);
+}
+
+#active-filter {
+  font-style: italic;
+  margin: 0 0 0.75rem;
+}
+
+#corpus-section h2 {
+  margin-top: 0;
+}
+
+#texts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.text-card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  position: relative;
+  gap: 0.75rem;
+}
+
+.text-card .text-id {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.text-card .text-content {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.text-card .delete-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: var(--background-delete);
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+
+.tag {
+  background-color: var(--accent);
+  color: var(--primary);
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.tag:hover {
+  background-color: var(--primary);
+  color: var(--text-light);
+}
+
+.no-tags {
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--primary-light);
+}
