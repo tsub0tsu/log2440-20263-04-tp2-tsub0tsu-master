@@ -14,7 +14,7 @@ Quelques astuces :
 
 Inscrivez le nom complet et le matricule des membres de l'équipe dans le format suivant : `Jean Untel - 1234567`.
 
-- Membre #1 : Nom - matricule
+- Membre #1 : DADA ONILLON Nino - 2531024
 - Membre #2 : Nom - matricule
 
 ## Grille de correction
