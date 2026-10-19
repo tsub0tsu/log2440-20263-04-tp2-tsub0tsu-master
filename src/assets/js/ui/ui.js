@@ -14,11 +14,6 @@ export default class UI {
    */
   constructor(library) {
     this.#library = library;
-    console.log(this.#library.texts);
-this.#library.texts[0].tags = ["tag1", "tag2"];
-this.#library.texts[1].tags = ["tag2"];
-console.log(this.#library.texts);
-
   }
 
   /**

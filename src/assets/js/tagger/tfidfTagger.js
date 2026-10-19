@@ -5,7 +5,8 @@
  * élevé. Les mots communs ("le", "de", etc.) obtiennent un score proche de zéro.
  * TODO : lier les 2 classes : TfIdTagger et Tagger
  */
-export default class TfIdfTagger {
+import Tagger from "./tagger.js";
+export default class TfIdfTagger extends Tagger {
   // Fréquence documentaire de chaque mot du corpus
   #docFrequency;
 
@@ -15,6 +16,7 @@ export default class TfIdfTagger {
    * @param {number} tagCount nombre de tags à produire par texte
    */
   constructor(corpus, tagCount = 3) {
+    super(corpus, tagCount);
     this.#docFrequency = this.#computeDocFrequency();
   }
 
@@ -28,7 +30,8 @@ export default class TfIdfTagger {
   #computeDocFrequency() {
     // TODO : pour chaque texte, compter chaque mot une seule fois même s'il
     // apparaît plusieurs fois (utiliser un Set). Aucune boucle for/while.
-    return { 'todo': 1, 'completer': 2, 'etc': 3 };
+    const uniqueWordsPerText = this.corpus.flatMap((text) => [...new Set(this.tokenize(text.content))]);
+    return this.computeFrequency(uniqueWordsPerText);
   }
 
   /**
@@ -48,7 +51,7 @@ export default class TfIdfTagger {
    */
   computeScore({ word, count, tokenCount }) {
     // TODO : compléter la fonction en utilisant la formule TF-IDF.
-    const tf = 1;
+    const tf = count/tokenCount;
     const idf = Math.log(this.corpus.length / this.#docFrequency[word]);
     return tf * idf;
   }

@@ -22,7 +22,7 @@ export default class Tagger {
    * @returns {Array<{content:string}>} corpus de textes
    */
   get corpus() {
-    return null;
+    return this.#corpus;
   }
 
   /**
@@ -31,7 +31,7 @@ export default class Tagger {
    * @returns {number} nombre de tags
    */
   get tagCount() {
-    return null;
+    return this.#tagCount;
   }
 
   /**
@@ -57,16 +57,10 @@ export default class Tagger {
   computeFrequency(tokens) {
     // TODO #1: ce code contient une erreur : trouver l'erreur à l'aide des tests/debugger et corrigez là.
     // TODO #2: implémenter la fonctionnalité corrigée sans boucle for(;;)
-    const frequencies = {};
-    for (let i = 0; i < tokens.length; i++) {
-      const token = tokens[i];
-      if (frequencies[token] === undefined) {
-        frequencies[token] = 1;
-      }
-      frequencies[token] += 1;
-    };
-    return frequencies;
-
+    return tokens.reduce((frequencies, token) => {
+      frequencies[token] = (frequencies[token] || 0) + 1;
+      return frequencies;
+    }, {});
   }
 
   /**
@@ -93,8 +87,16 @@ export default class Tagger {
     // TODO : tokenize -> computeFrequency -> calculer le score de chaque mot
     // avec computeScore -> trier -> garder les N premiers -> retourner les
     // mots. Aucune boucle for/while permise.
-    const tokens = ['t','o','d','o'];
+    const tokens = this.tokenize(text);
+    const frequencies = this.computeFrequency(tokens);
 
-    return ['todo#1', 'todo#2', 'todo#3'];
+    return Object.entries(frequencies)
+      .map(([word, count]) => ({
+        word, 
+        score: this.computeScore({ word, count, tokenCount: tokens.length }),
+      }))
+      .sort((a,b) => b.score - a.score || a.word.localeCompare(b.word))
+      .slice(0, this.tagCount)
+      .map(({word}) => word);
   }
 }

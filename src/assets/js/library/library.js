@@ -4,12 +4,12 @@ export default class Library {
    * Initialise la bibliothèque avec une liste de textes et ajoute une liste de tags vide
    * @param {Array<{id:number, content:string, tags?: string[]}>} texts textes initiaux de la bibliothèque
    */
-  constructor(texts = []) {
     // TODO : réécrire la logique sans utiliser la méthode forEach ou une boucle for/while
-  this.texts = texts.map((text) => {
-  text.tags = text.tags || [];
-  return text;
-  });
+  constructor(texts = []) { 
+    this.texts = texts.map((text) => {
+      text.tags = text.tags || [];
+      return text;
+    });
   }
 
   /**
@@ -18,8 +18,9 @@ export default class Library {
    */
   addText(content) {
     // TODO : trouver le prochain identifiant sans boucle for/while et créer une nouvelle entrée dans la bibliothèque
-    const nextId = -1;
+    const nextId = this.texts.reduce((maxId, text) => Math.max(maxId, text.id), 0) + 1;
     const text = { id: nextId, content, tags: [] };
+    this.texts.push(text);
   }
 
   /**
@@ -28,6 +29,7 @@ export default class Library {
    */
   removeText(id) {
     // TODO : supprimer le texte sans boucle for/while
+    this.texts = this.texts.filter((text) => text.id !== id);
   }
 
   /**
@@ -37,6 +39,7 @@ export default class Library {
    */
   getText(id) {
     // TODO : retrouver un texte spécifique sans boucle for/while
+    return this.texts.find((text) => text.id === id);
   }
 
   /**

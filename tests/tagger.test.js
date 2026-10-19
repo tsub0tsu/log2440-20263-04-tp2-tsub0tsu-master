@@ -43,7 +43,7 @@ describe("Tagger tests", () => {
   describe("computeFrequency", () => {
     const tagger = new Tagger(corpus);
 
-    it("should count the occurrences of every token (NOTE : devrait échouer initialement)", () => {
+    it("should count the occurrences of every token", () => {
       const tokens = ["le", "chat", "dort", "et", "le", "chat", "mange"];
       expect(tagger.computeFrequency(tokens)).toEqual({ le: 2, chat: 2, dort: 1, et: 1, mange: 1 });
     });
