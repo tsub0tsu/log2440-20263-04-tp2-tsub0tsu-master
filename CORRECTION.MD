@@ -16,7 +16,7 @@ Inscrivez le nom complet et le matricule des membres de l'équipe dans le format
 
 - Membre #1 : DADA ONILLON Nino - 2531024
 - Membre #2 : Nom - matricule
-
+Des SIAGS ont ete utilisees pour ce travail.
 ## Grille de correction
 
 | **Exigences**                                                   | **Note** | **Points** |
